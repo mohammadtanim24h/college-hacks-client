@@ -1,11 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
+import Main from "../layout/Main";
 import AddBlog from "../pages/AddBlog";
 import Home from "../pages/Home";
 
 const routes = createBrowserRouter([
     {
         path: "/",
-        element: <Home />,
+        element: <Main />,
         children: [
             {
                 path: "/",
@@ -18,3 +19,5 @@ const routes = createBrowserRouter([
         ],
     },
 ]);
+
+export default routes;

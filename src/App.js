@@ -1,10 +1,12 @@
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
+import routes from "./routes/routes";
 
 function App() {
     return (
-        <>
-            <h2 className="text-green-600 text-2xl">Project name</h2>
-        </>
+        <div className="max-w-screen-2xl mx-auto">
+            <RouterProvider router={routes} />
+        </div>
     );
 }
 
