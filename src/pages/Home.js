@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import loadBlogData from "../redux/thunk/blogs/fetchBlogs";
 
 const Home = () => {
-    const [blogs, setBlogs] = useState([]);
-    const state = useSelector((state) => state);
+    const blogs = useSelector((state) => state.blog.blogs);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        fetch("blogs.json")
-            .then((res) => res.json())
-            .then((data) => setBlogs(data));
-    }, []);
+        dispatch(loadBlogData());
+    }, [dispatch]);
 
     return (
         <div className="grid gap-4 grid-cols-3">
