@@ -20,7 +20,7 @@ const Home = () => {
                         key={index}
                         className="flex justify-center items-center"
                     >
-                        <div className="card card-compact w-96 h-full bg-base-100 shadow-xl">
+                        <div className="card card-compact w-96 h-full rounded-lg bg-base-100 shadow-xl">
                             <figure>
                                 <img
                                     className="lg:w-96 lg:h-64 object-contain"
