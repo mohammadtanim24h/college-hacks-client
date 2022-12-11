@@ -26,10 +26,10 @@ const Navbar = () => {
                         tabIndex={0}
                         className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
                     >
-                        <li>
+                        <li className="m-1">
                             <NavLink to="/">Home</NavLink>
                         </li>
-                        <li>
+                        <li className="m-1">
                             <NavLink to="add-blog">Add Blog</NavLink>
                         </li>
                     </ul>
@@ -40,10 +40,10 @@ const Navbar = () => {
             </div>
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li>
+                    <li className="m-1">
                         <NavLink to="/">Home</NavLink>
                     </li>
-                    <li>
+                    <li className="m-1">
                         <NavLink to="add-blog">Add Blog</NavLink>
                     </li>
                 </ul>
