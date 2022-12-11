@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Home = () => {
     const [blogs, setBlogs] = useState([]);
+    const state = useSelector((state) => state);
+
     useEffect(() => {
         fetch("blogs.json")
             .then((res) => res.json())
@@ -12,12 +15,15 @@ const Home = () => {
         <div className="grid gap-4 grid-cols-3">
             {blogs &&
                 blogs.length &&
-                blogs.map((blog) => (
-                    <div className="flex justify-center items-center">
-                        <div className="card card-compact w-96 bg-base-100 shadow-xl">
+                blogs.map((blog, index) => (
+                    <div
+                        key={index}
+                        className="flex justify-center items-center"
+                    >
+                        <div className="card card-compact w-96 h-full bg-base-100 shadow-xl">
                             <figure>
                                 <img
-                                    className="lg:w-72 lg:h-48 object-contain"
+                                    className="lg:w-96 lg:h-64 object-contain"
                                     src={blog.image}
                                     alt=""
                                 />
