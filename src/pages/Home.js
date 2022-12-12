@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import BlogCard from "../components/blogCard";
 import { filterByUploadDate } from "../redux/actions/filterActions";
 import loadBlogData from "../redux/thunk/blogs/fetchBlogs";
 
@@ -12,9 +13,37 @@ const Home = () => {
         dispatch(loadBlogData());
     }, [dispatch]);
 
-    console.log(filterType);
-
     const activeFilter = "bg-black text-white";
+
+    let content;
+
+    if (blogs.length) {
+        content = blogs.map((blog, index) => (
+            <BlogCard key={index} blog={blog} />
+        ));
+    }
+
+    if (blogs.length && filterType) {
+        if (filterType === "Sort by last upload") {
+            content = blogs
+                .slice()
+                .sort(function (a, b) {
+                    const c = new Date(b.dateCreated);
+                    const d = new Date(a.dateCreated);
+                    return c - d;
+                })
+                .map((blog, index) => <BlogCard key={index} blog={blog} />);
+        } else if (filterType === "Sort by the first upload") {
+            content = blogs
+                .slice()
+                .sort(function (a, b) {
+                    const c = new Date(a.dateCreated);
+                    const d = new Date(b.dateCreated);
+                    return c - d;
+                })
+                .map((blog, index) => <BlogCard key={index} blog={blog} />);
+        }
+    }
 
     return (
         <div>
@@ -42,42 +71,7 @@ const Home = () => {
                 </button>
             </div>
             <div className="grid gap-4 grid-cols-1 lg:grid-cols-3">
-                {blogs &&
-                    blogs.length &&
-                    blogs.map((blog, index) => (
-                        <div
-                            key={index}
-                            className="flex justify-center items-center"
-                        >
-                            <div className="card card-compact w-96 h-full rounded-lg bg-base-100 shadow-xl">
-                                <figure>
-                                    <img
-                                        className="lg:w-96 lg:h-64 object-contain"
-                                        src={blog.image}
-                                        alt=""
-                                    />
-                                </figure>
-                                <div className="card-body">
-                                    <h2 className="card-title">
-                                        {blog.blogTitle}
-                                    </h2>
-                                    <p>
-                                        {blog.blogDescription.length > 250
-                                            ? blog.blogDescription.slice(
-                                                  0,
-                                                  250
-                                              ) + "..."
-                                            : blog.blogDescription}
-                                    </p>
-                                    <div className="card-actions justify-end">
-                                        <button className="btn btn-primary">
-                                            Buy Now
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+                {content}
             </div>
         </div>
     );
