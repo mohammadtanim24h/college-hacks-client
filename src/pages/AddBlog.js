@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { addBlog } from "../redux/actions/blogActions";
 
 const AddBlog = () => {
     const {
@@ -36,7 +37,7 @@ const AddBlog = () => {
                 { title: data.topicName5, details: data.topicDetails5 },
             ],
         };
-        console.log(blog);
+        dispatch(addBlog(blog));
     };
 
     return (
