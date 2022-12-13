@@ -3,12 +3,40 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 
 const AddBlog = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
     const dispatch = useDispatch();
 
     const submit = (data) => {
-        const blog = {};
-        console.log(data);
+        const date = new Date();
+        const currentDate = date.toDateString().slice(4);
+        const currentTime = date.toLocaleTimeString();
+        const dateCreated = currentDate + " " + currentTime;
+
+        const blog = {
+            blogTitle: data.blogTitle,
+            image: data.image,
+            dateCreated,
+            tags: [
+                data.topicName1,
+                data.topicName2,
+                data.topicName3,
+                data.topicName4,
+                data.topicName5,
+            ],
+            blogDescription: data.blogDescription,
+            topics: [
+                { title: data.topicName1, details: data.topicDetails1 },
+                { title: data.topicName2, details: data.topicDetails2 },
+                { title: data.topicName3, details: data.topicDetails3 },
+                { title: data.topicName4, details: data.topicDetails4 },
+                { title: data.topicName5, details: data.topicDetails5 },
+            ],
+        };
+        console.log(blog);
     };
 
     return (
@@ -28,7 +56,11 @@ const AddBlog = () => {
                             id="blogTitle"
                             {...register("blogTitle", { required: true })}
                         />
-                        {errors.blogTitle && <span className="text-red-500">Title is required</span>}
+                        {errors.blogTitle && (
+                            <span className="text-red-500">
+                                Title is required
+                            </span>
+                        )}
                     </div>
                     <div className="flex flex-col w-full max-w-xs">
                         <label className="mb-2" htmlFor="image">
@@ -41,7 +73,11 @@ const AddBlog = () => {
                             id="image"
                             {...register("image", { required: true })}
                         />
-                        {errors.image && <span className="text-red-500">Image is required</span>}
+                        {errors.image && (
+                            <span className="text-red-500">
+                                Image is required
+                            </span>
+                        )}
                     </div>
 
                     <div className="flex flex-col w-full max-w-xs">
@@ -54,7 +90,11 @@ const AddBlog = () => {
                             id="blogDescription"
                             {...register("blogDescription", { required: true })}
                         ></textarea>
-                        {errors.blogDescription && <span className="text-red-500">Blog description is required</span>}
+                        {errors.blogDescription && (
+                            <span className="text-red-500">
+                                Blog description is required
+                            </span>
+                        )}
                     </div>
 
                     <div className="flex flex-col w-full max-w-xs"></div>

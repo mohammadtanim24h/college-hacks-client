@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import BlogCard from "../components/blogCard";
 import { filterByUploadDate } from "../redux/actions/filterActions";
