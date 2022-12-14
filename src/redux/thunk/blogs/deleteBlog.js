@@ -1,3 +1,4 @@
+import { toast } from "react-hot-toast";
 import { deleteBlog } from "../../actions/blogActions";
 
 const deleteBlogData = (id) => {
@@ -8,6 +9,9 @@ const deleteBlogData = (id) => {
         const data = await resp.json();
         if (data.acknowledged) {
             dispatch(deleteBlog(id));
+            setTimeout(() => {
+                toast.success("Blog deleted successfully");
+            }, 1000);
         }
     };
 };

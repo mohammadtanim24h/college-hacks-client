@@ -1,3 +1,4 @@
+import { toast } from "react-hot-toast";
 import { addBlog } from "../../actions/blogActions";
 
 const addBlogData = (blog) => {
@@ -12,6 +13,9 @@ const addBlogData = (blog) => {
         const data = await resp.json();
         if (data.acknowledged) {
             dispatch(addBlog({ _id: data.insertedId, ...blog }));
+            setTimeout(() => {
+                toast.success("Blog added successfully");
+            }, 1000);
         }
     };
 };
