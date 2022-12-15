@@ -15,7 +15,7 @@ const addBlogData = (blog) => {
             dispatch(addBlog({ _id: data.insertedId, ...blog }));
             setTimeout(() => {
                 toast.success("Blog added successfully");
-            }, 1000);
+            }, 500);
         }
     };
 };

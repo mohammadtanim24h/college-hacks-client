@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import deleteBlogData from "../redux/thunk/blogs/deleteBlog";
 import loadBlogData from "../redux/thunk/blogs/fetchBlogs";
+import { AiOutlineEdit } from "react-icons/ai";
 
 const ManageBlogs = () => {
     const blogs = useSelector((state) => state.blog.blogs);
@@ -91,13 +92,19 @@ const ManageBlogs = () => {
                                         </td>
 
                                         <td class="p-2">
-                                            <div class="flex justify-center">
+                                            <div class="flex justify-center items-center">
+                                                <AiOutlineEdit
+                                                    size={22}
+                                                    className="mr-4 hover:text-blue-500 cursor-pointer"
+                                                    title="Edit Blog"
+                                                />
                                                 <button
                                                     onClick={() =>
                                                         dispatch(
                                                             deleteBlogData(_id)
                                                         )
                                                     }
+                                                    title="Delete Blog"
                                                 >
                                                     <svg
                                                         class="w-8 h-8 text-red-600 rounded-full hover:bg-gray-100 p-1"
