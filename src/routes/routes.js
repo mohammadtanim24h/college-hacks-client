@@ -3,6 +3,7 @@ import Main from "../layout/Main";
 import AddBlog from "../pages/AddBlog";
 import Home from "../pages/Home";
 import ManageBlogs from "../pages/ManageBlogs";
+import UpdateBlog from "../pages/UpdateBlog";
 
 const routes = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ const routes = createBrowserRouter([
             {
                 path: "manage-blogs",
                 element: <ManageBlogs />,
+            },
+            {
+                path: "update-blog",
+                element: <UpdateBlog />,
             },
         ],
     },

@@ -1,7 +1,7 @@
 import { toast } from "react-hot-toast";
 import { deleteBlog } from "../../actions/blogActions";
 
-const deleteBlogData = (id) => {
+const DELETE_CONTENT = (id) => {
     return async (dispatch) => {
         const resp = await fetch(`http://localhost:5000/blog/${id}`, {
             method: "DELETE",
@@ -16,4 +16,4 @@ const deleteBlogData = (id) => {
     };
 };
 
-export default deleteBlogData;
+export default DELETE_CONTENT;

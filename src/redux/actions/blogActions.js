@@ -1,4 +1,9 @@
-import { ADD_BLOG, DELETE_BLOG, LOAD_BLOGS } from "../actionTypes/actionTypes";
+import {
+    ADD_BLOG,
+    DELETE_BLOG,
+    LOAD_BLOGS,
+    SELECT_BLOG_TO_UPDATE,
+} from "../actionTypes/actionTypes";
 
 export const loadBlog = (data) => {
     return {
@@ -17,6 +22,13 @@ export const addBlog = (blog) => {
 export const deleteBlog = (id) => {
     return {
         type: DELETE_BLOG,
+        payload: id,
+    };
+};
+
+export const selectBlogToUpdate = (id) => {
+    return {
+        type: SELECT_BLOG_TO_UPDATE,
         payload: id,
     };
 };

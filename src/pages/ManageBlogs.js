@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import deleteBlogData from "../redux/thunk/blogs/deleteBlog";
-import loadBlogData from "../redux/thunk/blogs/fetchBlogs";
 import { AiOutlineEdit } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import { selectBlogToUpdate } from "../redux/actions/blogActions";
+import GET_CONTENT from "../redux/thunk/blogs/fetchBlogs";
+import DELETE_CONTENT from "../redux/thunk/blogs/deleteBlog";
 
 const ManageBlogs = () => {
     const blogs = useSelector((state) => state.blog.blogs);
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(loadBlogData());
+        dispatch(GET_CONTENT());
     }, [dispatch]);
     return (
         <div class="flex flex-col justify-center items-center h-full w-full ">
@@ -19,7 +21,7 @@ const ManageBlogs = () => {
 
                 <div class="overflow-x-auto p-3">
                     <table class="table-auto w-full">
-                        <thead class="text-xs font-semibold uppercase text-slate-800 bg-gray-50">
+                        <thead class="text-xs font-semibold uppercase text-slate-800">
                             <tr>
                                 <th class="p-2">
                                     <div class="font-semibold text-left">
@@ -40,6 +42,9 @@ const ManageBlogs = () => {
                                     <div class="font-semibold text-left">
                                         Date Created
                                     </div>
+                                </th>
+                                <th class="p-2">
+                                    <div class="font-semibold">Manage</div>
                                 </th>
                             </tr>
                         </thead>
@@ -93,15 +98,20 @@ const ManageBlogs = () => {
 
                                         <td class="p-2">
                                             <div class="flex justify-center items-center">
-                                                <AiOutlineEdit
-                                                    size={22}
-                                                    className="mr-4 hover:text-blue-500 cursor-pointer"
-                                                    title="Edit Blog"
-                                                />
+                                                <Link 
+                                                    to="/update-blog" 
+                                                    onClick={() => dispatch(selectBlogToUpdate(_id))}
+                                                    >
+                                                        <AiOutlineEdit
+                                                            size={22}
+                                                            className="mr-4 hover:text-blue-500 cursor-pointer"
+                                                            title="Update Blog"
+                                                        />
+                                                </Link>
                                                 <button
                                                     onClick={() =>
                                                         dispatch(
-                                                            deleteBlogData(_id)
+                                                            DELETE_CONTENT(_id)
                                                         )
                                                     }
                                                     title="Delete Blog"

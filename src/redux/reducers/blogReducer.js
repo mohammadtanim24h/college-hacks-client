@@ -1,7 +1,13 @@
-import { ADD_BLOG, DELETE_BLOG, LOAD_BLOGS } from "../actionTypes/actionTypes";
+import {
+    ADD_BLOG,
+    DELETE_BLOG,
+    LOAD_BLOGS,
+    SELECT_BLOG_TO_UPDATE,
+} from "../actionTypes/actionTypes";
 
 const initialState = {
     blogs: [],
+    selectedBlog: {},
 };
 
 const blogReducer = (state = initialState, action) => {
@@ -21,6 +27,13 @@ const blogReducer = (state = initialState, action) => {
                 ...state,
                 blogs: state.blogs.filter(
                     (blog) => blog._id !== action.payload
+                ),
+            };
+        case SELECT_BLOG_TO_UPDATE:
+            return {
+                ...state,
+                selectedBlog: state.blogs.find(
+                    (blog) => blog._id === action.payload
                 ),
             };
         default:

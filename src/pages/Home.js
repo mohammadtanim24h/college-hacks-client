@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import BlogCard from "../components/blogCard";
 import { filterByUploadDate } from "../redux/actions/filterActions";
-import loadBlogData from "../redux/thunk/blogs/fetchBlogs";
+import GET_CONTENT from "../redux/thunk/blogs/fetchBlogs";
 
 const Home = () => {
     const blogs = useSelector((state) => state.blog.blogs);
@@ -10,7 +10,7 @@ const Home = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(loadBlogData());
+        dispatch(GET_CONTENT());
     }, [dispatch]);
 
     const activeFilter = "bg-black text-white";

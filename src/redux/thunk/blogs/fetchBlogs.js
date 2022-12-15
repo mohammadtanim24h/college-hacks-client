@@ -1,6 +1,6 @@
 import { loadBlog } from "../../actions/blogActions";
 
-const loadBlogData = () => {
+const GET_CONTENT = () => {
     return async (dispatch) => {
         const resp = await fetch("http://localhost:5000/blogs");
         const data = await resp.json();
@@ -10,4 +10,4 @@ const loadBlogData = () => {
     };
 };
 
-export default loadBlogData;
+export default GET_CONTENT;

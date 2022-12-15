@@ -1,7 +1,7 @@
 import { toast } from "react-hot-toast";
 import { addBlog } from "../../actions/blogActions";
 
-const addBlogData = (blog) => {
+const ADD_CONTENT = (blog) => {
     return async (dispatch) => {
         const resp = await fetch("http://localhost:5000/add-blog", {
             method: "POST",
@@ -20,4 +20,4 @@ const addBlogData = (blog) => {
     };
 };
 
-export default addBlogData;
+export default ADD_CONTENT;

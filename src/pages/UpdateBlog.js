@@ -1,26 +1,21 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import ADD_CONTENT from "../redux/thunk/blogs/addBlogData";
 
-const AddBlog = () => {
+const UpdateBlog = () => {
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
+    
+    
     const dispatch = useDispatch();
 
     const submit = (data) => {
-        const date = new Date();
-        const currentDate = date.toDateString().slice(4);
-        const currentTime = date.toLocaleTimeString();
-        const dateCreated = currentDate + " " + currentTime;
-
         const blog = {
             blogTitle: data.blogTitle,
             image: data.image,
-            dateCreated,
             tags: [
                 data.topicName1,
                 data.topicName2,
@@ -37,13 +32,12 @@ const AddBlog = () => {
                 { title: data.topicName5, details: data.topicDetails5 },
             ],
         };
-        dispatch(ADD_CONTENT(blog));
+        console.log(blog);
     };
-
     return (
         <>
             <div className="text-center">
-                <h1 className="text-3xl text-slate-700 font-bold">Add Blog</h1>
+                <h1 className="text-3xl text-slate-700 font-bold">Update Blog</h1>
             </div>
             <div className="flex justify-center items-center h-full ">
                 <form
@@ -247,4 +241,4 @@ const AddBlog = () => {
     );
 };
 
-export default AddBlog;
+export default UpdateBlog;
