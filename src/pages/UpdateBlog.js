@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const UpdateBlog = () => {
     const {
@@ -8,9 +8,9 @@ const UpdateBlog = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    
-    
+    const blog = useSelector((state) => state.blog.selectedBlog);
     const dispatch = useDispatch();
+    const { topics } = blog;
 
     const submit = (data) => {
         const blog = {
@@ -37,7 +37,9 @@ const UpdateBlog = () => {
     return (
         <>
             <div className="text-center">
-                <h1 className="text-3xl text-slate-700 font-bold">Update Blog</h1>
+                <h1 className="text-3xl text-slate-700 font-bold">
+                    Update Blog
+                </h1>
             </div>
             <div className="flex justify-center items-center h-full ">
                 <form
@@ -52,6 +54,11 @@ const UpdateBlog = () => {
                             className="input input-bordered"
                             type="text"
                             id="blogTitle"
+                            defaultValue={
+                                Object.keys(blog).length > 0
+                                    ? blog?.blogTitle
+                                    : ""
+                            }
                             {...register("blogTitle", { required: true })}
                         />
                         {errors.blogTitle && (
@@ -69,6 +76,9 @@ const UpdateBlog = () => {
                             type="text"
                             name="image"
                             id="image"
+                            defaultValue={
+                                Object.keys(blog).length > 0 ? blog?.image : ""
+                            }
                             {...register("image", { required: true })}
                         />
                         {errors.image && (
@@ -86,6 +96,11 @@ const UpdateBlog = () => {
                             className="textarea textarea-bordered"
                             name="blogDescription"
                             id="blogDescription"
+                            defaultValue={
+                                Object.keys(blog).length > 0
+                                    ? blog?.blogDescription
+                                    : ""
+                            }
                             {...register("blogDescription", { required: true })}
                         ></textarea>
                         {errors.blogDescription && (
@@ -107,6 +122,11 @@ const UpdateBlog = () => {
                                 name="topicName1"
                                 id="topicName1"
                                 className="input input-bordered"
+                                defaultValue={
+                                    Object.keys(blog).length > 0
+                                        ? topics[0] && blog?.topics[0].title
+                                        : ""
+                                }
                                 {...register("topicName1")}
                             />
                         </div>
@@ -118,6 +138,11 @@ const UpdateBlog = () => {
                                 className="textarea textarea-bordered"
                                 name="topicDetails1"
                                 id="topicDetails1"
+                                defaultValue={
+                                    Object.keys(blog).length > 0
+                                        ? topics[0] && blog?.topics[0].details
+                                        : ""
+                                }
                                 {...register("topicDetails1")}
                             ></textarea>
                         </div>
@@ -133,6 +158,11 @@ const UpdateBlog = () => {
                                 name="topicName2"
                                 id="topicName2"
                                 className="input input-bordered"
+                                defaultValue={
+                                    Object.keys(blog).length > 0
+                                        ? topics[1] && blog?.topics[1].title
+                                        : ""
+                                }
                                 {...register("topicName2")}
                             />
                         </div>
@@ -144,6 +174,11 @@ const UpdateBlog = () => {
                                 className="textarea textarea-bordered"
                                 name="topicDetails2"
                                 id="topicDetails2"
+                                defaultValue={
+                                    Object.keys(blog).length > 0
+                                        ? topics[1] && blog?.topics[1].details
+                                        : ""
+                                }
                                 {...register("topicDetails2")}
                             ></textarea>
                         </div>
@@ -159,6 +194,11 @@ const UpdateBlog = () => {
                                 name="topicName3"
                                 id="topicName3"
                                 className="input input-bordered"
+                                defaultValue={
+                                    Object.keys(blog).length > 0
+                                        ? topics[2] && blog?.topics[2].title
+                                        : ""
+                                }
                                 {...register("topicName3")}
                             />
                         </div>
@@ -170,6 +210,11 @@ const UpdateBlog = () => {
                                 className="textarea textarea-bordered"
                                 name="topicDetails3"
                                 id="topicDetails3"
+                                defaultValue={
+                                    Object.keys(blog).length > 0
+                                        ? topics[2] && blog?.topics[2].details
+                                        : ""
+                                }
                                 {...register("topicDetails3")}
                             ></textarea>
                         </div>
@@ -185,6 +230,11 @@ const UpdateBlog = () => {
                                 name="topicName4"
                                 id="topicName4"
                                 className="input input-bordered"
+                                defaultValue={
+                                    Object.keys(blog).length > 0
+                                        ? topics[3] && blog?.topics[3].title
+                                        : ""
+                                }
                                 {...register("topicName4")}
                             />
                         </div>
@@ -196,6 +246,11 @@ const UpdateBlog = () => {
                                 className="textarea textarea-bordered"
                                 name="topicDetails4"
                                 id="topicDetails4"
+                                defaultValue={
+                                    Object.keys(blog).length > 0
+                                        ? topics[3] && blog?.topics[3].details
+                                        : ""
+                                }
                                 {...register("topicDetails4")}
                             ></textarea>
                         </div>
@@ -211,6 +266,11 @@ const UpdateBlog = () => {
                                 name="topicName5"
                                 id="topicName5"
                                 className="input input-bordered"
+                                defaultValue={
+                                    Object.keys(blog).length > 0
+                                        ? topics[4] && blog?.topics[4].title
+                                        : ""
+                                }
                                 {...register("topicName5")}
                             />
                         </div>
@@ -222,6 +282,11 @@ const UpdateBlog = () => {
                                 className="textarea textarea-bordered"
                                 name="topicDetails5"
                                 id="topicDetails5"
+                                defaultValue={
+                                    Object.keys(blog).length > 0
+                                        ? topics[4] && blog?.topics[4].details
+                                        : ""
+                                }
                                 {...register("topicDetails5")}
                             ></textarea>
                         </div>
