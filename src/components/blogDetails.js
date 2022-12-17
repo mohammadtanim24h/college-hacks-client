@@ -8,7 +8,9 @@ import GET_BLOG_DETAILS from "../redux/thunk/blogs/getBlogDetails";
 const BlogDetails = () => {
     const { id } = useParams();
     const blog = useSelector((state) => state.blog.blog);
+    const filteredTag = useSelector((state) => state.filter.topicsFilterTag);
     const dispatch = useDispatch();
+    const activeFilter = "bg-black text-white";
 
     useEffect(() => {
         dispatch(GET_BLOG_DETAILS(id));
@@ -33,7 +35,11 @@ const BlogDetails = () => {
                               (tag) =>
                                   tag && (
                                       <button
-                                          className={`border border-black mr-2 mb-2 px-3 py-2`}
+                                          className={`border border-black mr-2 mb-2 px-3 py-2 ${
+                                              filteredTag === tag
+                                                  ? activeFilter
+                                                  : ""
+                                          }`}
                                           onClick={() =>
                                               dispatch(filterByTagName(tag))
                                           }
