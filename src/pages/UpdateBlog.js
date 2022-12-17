@@ -44,7 +44,7 @@ const UpdateBlog = () => {
 
     useEffect(() => {
         dispatch(GET_SINGLE_BLOG(id, reset));
-        return () => dispatch(clearBlogData());
+        return () => dispatch(clearBlogData("update"));
     }, [id]);
 
     return (

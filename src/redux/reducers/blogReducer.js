@@ -38,10 +38,17 @@ const blogReducer = (state = initialState, action) => {
                 selectedBlog: action.payload,
             };
         case CLEAR_BLOG_DATA:
-            return {
-                ...state,
-                selectedBlog: {},
-            };
+            if (action.payload === "view") {
+                return {
+                    ...state,
+                    blog: {},
+                };
+            } else {
+                return {
+                    ...state,
+                    selectedBlog: {},
+                };
+            }
         case VIEW_BLOG:
             return {
                 ...state,

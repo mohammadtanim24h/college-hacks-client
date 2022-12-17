@@ -35,9 +35,10 @@ export const selectBlogToUpdate = (blog) => {
     };
 };
 
-export const clearBlogData = () => {
+export const clearBlogData = (source) => {
     return {
         type: CLEAR_BLOG_DATA,
+        payload: source,
     };
 };
 
