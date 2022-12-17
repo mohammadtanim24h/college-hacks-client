@@ -15,13 +15,39 @@ const BlogDetails = () => {
     }, [id]);
 
     return (
-        <div className="p-3">
-            <div>
-                <img src={blog?.image} alt="" />
+        <div className="flex flex-col lg:flex-row gap-5 mx-5 my-2 p-3 shadow-md">
+            <div className="flex justify-center shrink-0">
+                <img className="w-96 object-contain" src={blog?.image} alt="" />
             </div>
-            <p className="text-center text-3xl text-slate-700">
-                {blog?.blogTitle}
-            </p>
+            <div>
+                <div>
+                    <h1 className="text-3xl font-semibold text-slate-700">
+                        {blog?.blogTitle}
+                    </h1>
+                    <p className="text-lg">{blog?.blogDescription}</p>
+                </div>
+                <div className="mt-2">
+                    {blog?.tags?.length
+                        ? blog.tags.map((tag) => (
+                              <button
+                                  className={`border border-black mr-2 mb-2 px-3 py-2`}
+                              >
+                                  {tag}
+                              </button>
+                          ))
+                        : ""}
+                </div>
+                <div className="mt-2">
+                    {blog?.topics?.length
+                        ? blog?.topics?.map((topic) => (
+                              <div>
+                                  <h3 className="text-2xl">{topic.title}</h3>
+                                  <p>{topic.details}</p>
+                              </div>
+                          ))
+                        : ""}
+                </div>
+            </div>
         </div>
     );
 };
