@@ -23,7 +23,7 @@ const routes = createBrowserRouter([
                 element: <ManageBlogs />,
             },
             {
-                path: "update-blog",
+                path: "update-blog/:id",
                 element: <UpdateBlog />,
             },
         ],

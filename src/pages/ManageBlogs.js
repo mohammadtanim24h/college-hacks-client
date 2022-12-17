@@ -99,8 +99,7 @@ const ManageBlogs = () => {
                                         <td class="p-2">
                                             <div class="flex justify-center items-center">
                                                 <Link 
-                                                    to="/update-blog" 
-                                                    onClick={() => dispatch(selectBlogToUpdate(_id))}
+                                                    to={`/update-blog/${_id}`} 
                                                     >
                                                         <AiOutlineEdit
                                                             size={22}

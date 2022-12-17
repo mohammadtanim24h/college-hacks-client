@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { clearBlogData } from "../redux/actions/blogActions";
+import GET_SINGLE_BLOG from "../redux/thunk/blogs/getBlogData";
 import UPDATE_CONTENT from "../redux/thunk/blogs/updateBlogData";
 
 const UpdateBlog = () => {
+    const { id } = useParams();
+    const dispatch = useDispatch();
     const {
         register,
         handleSubmit,
         formState: { errors },
+        reset,
     } = useForm();
+
     const blog = useSelector((state) => state.blog.selectedBlog);
-    const dispatch = useDispatch();
     const { topics } = blog;
 
     const submit = (data) => {
@@ -35,6 +41,12 @@ const UpdateBlog = () => {
         };
         dispatch(UPDATE_CONTENT(updatedBlog, blog._id));
     };
+
+    useEffect(() => {
+        dispatch(GET_SINGLE_BLOG(id, reset));
+        return () => dispatch(clearBlogData());
+    }, [id]);
+
     return (
         <>
             <div className="text-center">

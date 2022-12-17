@@ -1,5 +1,6 @@
 import {
     ADD_BLOG,
+    CLEAR_BLOG_DATA,
     DELETE_BLOG,
     LOAD_BLOGS,
     SELECT_BLOG_TO_UPDATE,
@@ -32,9 +33,12 @@ const blogReducer = (state = initialState, action) => {
         case SELECT_BLOG_TO_UPDATE:
             return {
                 ...state,
-                selectedBlog: state.blogs.find(
-                    (blog) => blog._id === action.payload
-                ),
+                selectedBlog: action.payload,
+            };
+        case CLEAR_BLOG_DATA:
+            return {
+                ...state,
+                selectedBlog: {},
             };
         default:
             return state;

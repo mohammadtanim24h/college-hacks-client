@@ -1,5 +1,6 @@
 import {
     ADD_BLOG,
+    CLEAR_BLOG_DATA,
     DELETE_BLOG,
     LOAD_BLOGS,
     SELECT_BLOG_TO_UPDATE,
@@ -26,9 +27,15 @@ export const deleteBlog = (id) => {
     };
 };
 
-export const selectBlogToUpdate = (id) => {
+export const selectBlogToUpdate = (blog) => {
     return {
         type: SELECT_BLOG_TO_UPDATE,
-        payload: id,
+        payload: blog,
+    };
+};
+
+export const clearBlogData = () => {
+    return {
+        type: CLEAR_BLOG_DATA,
     };
 };
