@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { clearBlogData } from "../redux/actions/blogActions";
+import { filterByTagName } from "../redux/actions/filterActions";
 import GET_BLOG_DETAILS from "../redux/thunk/blogs/getBlogDetails";
 
 const BlogDetails = () => {
@@ -28,13 +29,19 @@ const BlogDetails = () => {
                 </div>
                 <div className="mt-2">
                     {blog?.tags?.length
-                        ? blog.tags.map((tag) => tag && (
-                              <button
-                                  className={`border border-black mr-2 mb-2 px-3 py-2`}
-                              >
-                                  {tag}
-                              </button>
-                          ))
+                        ? blog.tags.map(
+                              (tag) =>
+                                  tag && (
+                                      <button
+                                          className={`border border-black mr-2 mb-2 px-3 py-2`}
+                                          onClick={() =>
+                                              dispatch(filterByTagName(tag))
+                                          }
+                                      >
+                                          {tag}
+                                      </button>
+                                  )
+                          )
                         : ""}
                 </div>
                 <div className="mt-2">

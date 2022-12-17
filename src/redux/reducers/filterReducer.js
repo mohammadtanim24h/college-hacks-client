@@ -1,7 +1,11 @@
-import { FILTER_BY_UPLOAD_DATE } from "../actionTypes/actionTypes";
+import {
+    FILTER_BY_TAG_NAME,
+    FILTER_BY_UPLOAD_DATE,
+} from "../actionTypes/actionTypes";
 
 const initialState = {
     blogsFilterType: "",
+    topicsFilterTag: "",
 };
 
 const filterReducer = (state = initialState, action) => {
@@ -16,6 +20,18 @@ const filterReducer = (state = initialState, action) => {
                 return {
                     ...state,
                     blogsFilterType: action.payload,
+                };
+            }
+        case FILTER_BY_TAG_NAME:
+            if (state.topicsFilterTag === action.payload) {
+                return {
+                    ...state,
+                    topicsFilterTag: "",
+                };
+            } else {
+                return {
+                    ...state,
+                    topicsFilterTag: action.payload,
                 };
             }
         default:

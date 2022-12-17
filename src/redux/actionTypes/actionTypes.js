@@ -5,3 +5,4 @@ export const DELETE_BLOG = "DELETE_BLOG";
 export const SELECT_BLOG_TO_UPDATE = "SELECT_BLOG_TO_UPDATE";
 export const CLEAR_BLOG_DATA = "CLEAR_BLOG_DATA";
 export const VIEW_BLOG = "VIEW_BLOG";
+export const FILTER_BY_TAG_NAME = "FILTER_BY_TAG_NAME";
