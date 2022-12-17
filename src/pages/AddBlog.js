@@ -238,7 +238,7 @@ const AddBlog = () => {
                             className=" px-4 py-3 bg-slate-800 rounded-md text-white text-lg"
                             type="submit"
                         >
-                            Submit
+                            Add
                         </button>
                     </div>
                 </form>

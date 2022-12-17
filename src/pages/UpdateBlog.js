@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
+import UPDATE_CONTENT from "../redux/thunk/blogs/updateBlogData";
 
 const UpdateBlog = () => {
     const {
@@ -13,7 +14,7 @@ const UpdateBlog = () => {
     const { topics } = blog;
 
     const submit = (data) => {
-        const blog = {
+        const updatedBlog = {
             blogTitle: data.blogTitle,
             image: data.image,
             tags: [
@@ -32,7 +33,7 @@ const UpdateBlog = () => {
                 { title: data.topicName5, details: data.topicDetails5 },
             ],
         };
-        console.log(blog);
+        dispatch(UPDATE_CONTENT(updatedBlog, blog._id));
     };
     return (
         <>
@@ -297,7 +298,7 @@ const UpdateBlog = () => {
                             className=" px-4 py-3 bg-slate-800 rounded-md text-white text-lg"
                             type="submit"
                         >
-                            Submit
+                            Update
                         </button>
                     </div>
                 </form>
