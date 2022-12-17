@@ -4,6 +4,7 @@ import {
     DELETE_BLOG,
     LOAD_BLOGS,
     SELECT_BLOG_TO_UPDATE,
+    VIEW_BLOG,
 } from "../actionTypes/actionTypes";
 
 export const loadBlog = (data) => {
@@ -37,5 +38,12 @@ export const selectBlogToUpdate = (blog) => {
 export const clearBlogData = () => {
     return {
         type: CLEAR_BLOG_DATA,
+    };
+};
+
+export const viewBlog = (blog) => {
+    return {
+        type: VIEW_BLOG,
+        payload: blog,
     };
 };

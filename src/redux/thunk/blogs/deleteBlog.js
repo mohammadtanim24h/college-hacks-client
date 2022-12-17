@@ -11,7 +11,7 @@ const DELETE_CONTENT = (id) => {
             dispatch(deleteBlog(id));
             setTimeout(() => {
                 toast.success("Blog deleted successfully");
-            }, 500);
+            }, 100);
         }
     };
 };

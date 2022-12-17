@@ -1,10 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const BlogCard = ({ blog }) => {
-    const { image, blogTitle, blogDescription } = blog;
+    const { image, blogTitle, blogDescription, _id } = blog;
+    const navigate = useNavigate();
     return (
-        <div className="flex justify-center items-center cursor-pointer">
-            <div className="card card-compact w-96 h-full rounded-lg bg-base-100 shadow-xl">
+        <div className="flex justify-center items-center">
+            <div
+                onClick={() => navigate(`/blog/${_id}`)}
+                className="card card-compact w-96 h-full rounded-lg bg-base-100 shadow-xl cursor-pointer"
+            >
                 <figure>
                     <img
                         className="lg:w-96 lg:h-64 object-contain"

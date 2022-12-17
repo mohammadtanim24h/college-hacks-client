@@ -4,3 +4,4 @@ export const ADD_BLOG = "ADD_BLOG";
 export const DELETE_BLOG = "DELETE_BLOG";
 export const SELECT_BLOG_TO_UPDATE = "SELECT_BLOG_TO_UPDATE";
 export const CLEAR_BLOG_DATA = "CLEAR_BLOG_DATA";
+export const VIEW_BLOG = "VIEW_BLOG";

@@ -4,11 +4,13 @@ import {
     DELETE_BLOG,
     LOAD_BLOGS,
     SELECT_BLOG_TO_UPDATE,
+    VIEW_BLOG,
 } from "../actionTypes/actionTypes";
 
 const initialState = {
     blogs: [],
     selectedBlog: {},
+    blog: {},
 };
 
 const blogReducer = (state = initialState, action) => {
@@ -39,6 +41,11 @@ const blogReducer = (state = initialState, action) => {
             return {
                 ...state,
                 selectedBlog: {},
+            };
+        case VIEW_BLOG:
+            return {
+                ...state,
+                blog: action.payload,
             };
         default:
             return state;
