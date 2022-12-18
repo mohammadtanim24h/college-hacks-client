@@ -2,7 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { clearBlogData } from "../redux/actions/blogActions";
-import { filterByTagName } from "../redux/actions/filterActions";
+import {
+    clearFilterTag,
+    filterByTagName,
+} from "../redux/actions/filterActions";
 import GET_BLOG_DETAILS from "../redux/thunk/blogs/getBlogDetails";
 
 const BlogDetails = () => {
@@ -11,10 +14,23 @@ const BlogDetails = () => {
     const filteredTag = useSelector((state) => state.filter.topicsFilterTag);
     const dispatch = useDispatch();
     const activeFilter = "bg-black text-white";
+    let sortedTopics = blog?.topics && [...blog?.topics];
+    const foundIndex =
+        sortedTopics?.length &&
+        sortedTopics?.findIndex((el) => el.title === filteredTag);
+    const removedTopic =
+        foundIndex !== -1 && sortedTopics?.splice(foundIndex, 1);
+    sortedTopics = removedTopic?.length
+        ? [removedTopic[0], ...sortedTopics]
+        : sortedTopics;
+
 
     useEffect(() => {
         dispatch(GET_BLOG_DETAILS(id));
-        return () => dispatch(clearBlogData("view"));
+        return () => {
+            dispatch(clearBlogData("view"));
+            dispatch(clearFilterTag());
+        };
     }, [id]);
 
     return (
@@ -51,14 +67,19 @@ const BlogDetails = () => {
                         : ""}
                 </div>
                 <div className="mt-2">
-                    {blog?.topics?.length
-                        ? blog?.topics?.map((topic) => (
+                    {blog?.topics?.length && filteredTag
+                        ? sortedTopics?.map((topic) => (
                               <div className="my-3">
                                   <h3 className="text-2xl">{topic.title}</h3>
                                   <p>{topic.details}</p>
                               </div>
                           ))
-                        : ""}
+                        : blog?.topics?.map((topic) => (
+                              <div className="my-3">
+                                  <h3 className="text-2xl">{topic.title}</h3>
+                                  <p>{topic.details}</p>
+                              </div>
+                          ))}
                 </div>
             </div>
         </div>

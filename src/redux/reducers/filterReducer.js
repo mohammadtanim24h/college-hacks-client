@@ -1,4 +1,5 @@
 import {
+    CLEAR_FILTER_TAG,
     FILTER_BY_TAG_NAME,
     FILTER_BY_UPLOAD_DATE,
 } from "../actionTypes/actionTypes";
@@ -34,6 +35,11 @@ const filterReducer = (state = initialState, action) => {
                     topicsFilterTag: action.payload,
                 };
             }
+        case CLEAR_FILTER_TAG:
+            return {
+                ...state,
+                topicsFilterTag: "",
+            };
         default:
             return state;
     }
