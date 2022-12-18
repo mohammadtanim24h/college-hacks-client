@@ -35,6 +35,9 @@ const Navbar = () => {
                         <li className="m-1">
                             <NavLink to="manage-blogs">Manage Blogs</NavLink>
                         </li>
+                        <li className="m-1">
+                            <NavLink to="reading-history">Reading History</NavLink>
+                        </li>
                     </ul>
                 </div>
                 <a className="btn btn-ghost normal-case text-xl hover:bg-white">
@@ -51,6 +54,9 @@ const Navbar = () => {
                     </li>
                     <li className="m-1">
                         <NavLink to="manage-blogs">Manage Blogs</NavLink>
+                    </li>
+                    <li className="m-1">
+                        <NavLink to="reading-history">Reading History</NavLink>
                     </li>
                 </ul>
             </div>

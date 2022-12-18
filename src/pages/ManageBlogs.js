@@ -16,7 +16,7 @@ const ManageBlogs = () => {
         <div class="flex flex-col justify-center items-center h-full w-full ">
             <div class="w-full max-w-7xl mx-auto rounded-lg  bg-white shadow-lg border border-gray-200">
                 <header class="px-5 py-4 border-b border-gray-100">
-                    <div class="font-semibold text-gray-800">Products</div>
+                    <div class="font-semibold text-gray-800">Blogs</div>
                 </header>
 
                 <div class="overflow-x-auto p-3">

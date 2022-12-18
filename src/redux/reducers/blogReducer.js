@@ -57,10 +57,23 @@ const blogReducer = (state = initialState, action) => {
                 blog: action.payload,
             };
         case MANAGE_READING_HISTORY:
-            return {
-                ...state,
-                readingHistory: [action.payload, ...state.readingHistory],
-            };
+            const selectedBlog = state.readingHistory.find(
+                (blog) => blog._id === action.payload._id
+            );
+            if (selectedBlog) {
+                const newReadingHistory = state.readingHistory.filter(
+                    (blog) => blog._id !== selectedBlog._id
+                );
+                return {
+                    ...state,
+                    readingHistory: [selectedBlog, ...newReadingHistory],
+                };
+            } else {
+                return {
+                    ...state,
+                    readingHistory: [action.payload, ...state.readingHistory],
+                };
+            }
         default:
             return state;
     }
