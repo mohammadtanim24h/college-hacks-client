@@ -3,6 +3,7 @@ import {
     CLEAR_BLOG_DATA,
     DELETE_BLOG,
     LOAD_BLOGS,
+    MANAGE_READING_HISTORY,
     SELECT_BLOG_TO_UPDATE,
     VIEW_BLOG,
 } from "../actionTypes/actionTypes";
@@ -45,6 +46,13 @@ export const clearBlogData = (source) => {
 export const viewBlog = (blog) => {
     return {
         type: VIEW_BLOG,
+        payload: blog,
+    };
+};
+
+export const manageReadingHistory = (blog) => {
+    return {
+        type: MANAGE_READING_HISTORY,
         payload: blog,
     };
 };

@@ -1,13 +1,19 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { manageReadingHistory } from "../redux/actions/blogActions";
 
 const BlogCard = ({ blog }) => {
     const { image, blogTitle, blogDescription, _id } = blog;
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     return (
         <div className="flex justify-center items-center">
             <div
-                onClick={() => navigate(`/blog/${_id}`)}
+                onClick={() => {
+                    dispatch(manageReadingHistory(blog));
+                    navigate(`/blog/${_id}`);
+                }}
                 className="card card-compact w-96 h-full rounded-lg bg-base-100 shadow-xl cursor-pointer"
             >
                 <figure>

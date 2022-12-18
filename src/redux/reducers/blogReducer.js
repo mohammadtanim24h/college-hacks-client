@@ -3,6 +3,7 @@ import {
     CLEAR_BLOG_DATA,
     DELETE_BLOG,
     LOAD_BLOGS,
+    MANAGE_READING_HISTORY,
     SELECT_BLOG_TO_UPDATE,
     VIEW_BLOG,
 } from "../actionTypes/actionTypes";
@@ -11,6 +12,7 @@ const initialState = {
     blogs: [],
     selectedBlog: {},
     blog: {},
+    readingHistory: [],
 };
 
 const blogReducer = (state = initialState, action) => {
@@ -53,6 +55,11 @@ const blogReducer = (state = initialState, action) => {
             return {
                 ...state,
                 blog: action.payload,
+            };
+        case MANAGE_READING_HISTORY:
+            return {
+                ...state,
+                readingHistory: [action.payload, ...state.readingHistory],
             };
         default:
             return state;
