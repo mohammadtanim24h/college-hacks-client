@@ -3,7 +3,7 @@ import { addBlog } from "../../actions/blogActions";
 
 const ADD_CONTENT = (blog) => {
     return async (dispatch) => {
-        const resp = await fetch("http://localhost:5000/add-blog", {
+        const resp = await fetch("https://college-hacks.onrender.com/add-blog", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -3,7 +3,7 @@ import { deleteBlog } from "../../actions/blogActions";
 
 const DELETE_CONTENT = (id) => {
     return async (dispatch) => {
-        const resp = await fetch(`http://localhost:5000/blog/${id}`, {
+        const resp = await fetch(`https://college-hacks.onrender.com/blog/${id}`, {
             method: "DELETE",
         });
         const data = await resp.json();

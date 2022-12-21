@@ -2,7 +2,7 @@ import { toast } from "react-hot-toast";
 
 const UPDATE_CONTENT = (blog, id) => {
     return async () => {
-        const resp = await fetch(`http://localhost:5000/update-blog/${id}`, {
+        const resp = await fetch(`https://college-hacks.onrender.com/update-blog/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
